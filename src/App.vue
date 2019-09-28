@@ -9,6 +9,10 @@ export default {}
 
 <style lang="scss">
 
-// @import "../src/assets/scss/main.scss";
+@import "../src/assets/scss/main.scss";
+
+body {
+    overflow: hidden;
+}
 
 </style>
