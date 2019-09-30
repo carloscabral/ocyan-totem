@@ -1,5 +1,5 @@
 <template>
-  <div class="container-fluid px-5 py-4 main">
+  <div class="container-fluid px-5 py-4">
     <div class="row">
       <div class="col-1 mt-3"><img src="../assets/images/logo.svg" alt="Ocyan Logo"></div>
       <div class="col-5">
@@ -9,7 +9,7 @@
           <button class="search-wrapper__button" type="submit">Buscar</button>
         </form>        
       </div>
-      <div class="col-4 mt-3" style="height: 400px;">
+      <div class="col-4 mt-3">
         <div class="form__group">
           <div class="form__radio-group">
             <input type="radio" class="form__radio-input" id="br" name="language">
@@ -29,30 +29,87 @@
       </div>
     </div>
     <div class="row">
-      <div class="col">Central de Destaque</div>
+      <div class="col-md-5 offset-md-1">
+          <FeaturedNews class="featured-section"
+            :category="featuredItems[this.featuredId].category"
+            :title="featuredItems[this.featuredId].title"
+            :imageURL="featuredItems[this.featuredId].imageURL"
+            :link-text="featuredItems[this.featuredId].linkText"
+            :linkURL="featuredItems[this.featuredId].linkURL"
+            :is-video="featuredItems[this.featuredId].isVideo" />           
+      </div>
     </div>
     <div class="row">
       <div class="col">Central de Notícias</div>
     </div>
+    <span class="featured-section__btn-prev" @click="goPrev"></span>
+    <span class="featured-section__btn-next" @click="goNext"></span> 
   </div>
 </template>
 
 <script>
+import FeaturedNews from "./FeaturedNews";
+
 export default {
-  name: "Dashboard"
+  name: "Dashboard",
+  data: () => ({
+    featuredId: 0,
+    featuredItems: [
+        { 
+            id: 0,
+            category: "Notícias", 
+            title: "Startups poderão receber verba por inovação no setor petroleiro",
+            imageURL: "https://upload.wikimedia.org/wikipedia/commons/9/9e/Timisoara_-_Regional_Business_Centre.jpg", 
+            linkText: "Assista o vídeo",
+            linkURL: "https://www.youtube.com/watch?v=V3mhhT3c7oY",
+            isVideo: true 
+        },
+        { 
+            id: 1,
+            category: "Comunicados", 
+            title: "Ocyan abre inscrições de startups para concurso de inovação em óleo e gás",
+            imageURL: "http://www.timisoaranight.gruzphoto.eu/IMG_8554.jpg", 
+            linkText: "Leia o comunicado",
+            linkURL: "https://www.youtube.com/watch?v=gBAhgZZNR7E",
+            isVideo: false
+        },
+        {   
+            id: 2,
+            category: "Releases", 
+            title: "Ocyan vai intensificar negócios no mercado de FPSOs e prepara nova plataforma",
+            imageURL: "https://speakzeasy.files.wordpress.com/2015/05/twa_blogpic_timisoara-4415.jpg", 
+            linkText: "Leia o comunicado",
+            linkURL: "https://www.youtube.com/watch?v=LGfhStYcCZk",
+            isVideo: false
+        },
+        {   
+            id: 3,
+            category: "Notícias", 
+            title: "Ocyan, Magma e Brasfels formam joint-venture para sistema risers",
+            imageURL: "https://www.tnpetroleo.com.br/media/cache/42/ae/42aee16959525612d6399d4ce68c7313.jpg", 
+            linkText: "Assista o vídeo",
+            linkURL: "https://www.youtube.com/watch?v=YdJc7-ZEuT0",
+            isVideo: true
+        }
+    ]
+  }),
+  methods: {
+    goPrev() {
+        (this.featuredId <= 0) ? this.featuredId = 0 : this.featuredId --
+    },
+    goNext() {
+        (this.featuredId >= this.featuredItems.length - 1) ? this.featuredId = this.featuredItems.length -1 : this.featuredId ++
+    }
+  },    
+  components: {
+    FeaturedNews
+  }   
 };
 </script>
 
-<style scoped lang="scss">
+<style scoped lang="scss" scoped>
 
-  .main {
-    background-image: url("../assets/images/graphism.svg");
-    background-color: transparent;
-    background-position-y: -14rem;
-    background-position-x: 47rem;
-    background-repeat: no-repeat;
-    background-size: contain;
-  }
+@import "@/assets/scss/_variables.scss";
 
   .search-wrapper {
     position: relative;
@@ -90,7 +147,7 @@ export default {
       height: inherit;
       border-style: none;
       padding: .8rem 1.5rem;
-      background-color: #009cde;
+      background-color: $blue-color;
       color: #fff;
       font-size: .8rem;
       text-transform: uppercase;
@@ -112,7 +169,7 @@ export default {
       text-transform: uppercase;
       position: relative;
       padding-left: 2rem;
-      color: #3F5B70;
+      color: $primary-color;
     }
 
     &__radio-flag {
@@ -123,7 +180,7 @@ export default {
       
       height: 1.5rem;
       width: 1.5rem;
-      border: 1px solid #009CDE;
+      border: 1px solid $blue-color;
       border-radius: 50%;
       display: inline-block;
       position: absolute;
@@ -140,7 +197,7 @@ export default {
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%) scale(0);
-        background-color: #009CDE;
+        background-color: $blue-color;
         opacity: 0;
         transition: all .2s ease;
       }
@@ -154,6 +211,35 @@ export default {
       opacity: 1;
       transform: translate(-50%, -50%) scale(1);
     }
+  }
+
+  .featured-section {
+      
+    &__btn-prev {
+        position: absolute;
+        top: 45%;
+        left: 5rem;
+        width: 3.5rem;
+        height: 3.5rem;
+        border: 1rem solid $light-grey;
+        border-bottom: 0;
+        border-left: 0;
+        border-radius: 4px;
+        transform: rotate(225deg);
+        transition: border .2s ease;
+
+        &:hover {
+            cursor: pointer;
+            border-color: darken($light-grey, 20%);
+        }
+    }
+
+    &__btn-next {
+        @extend .featured-section__btn-prev;
+        left: 58.5rem !important;
+        transform: rotate(45deg);
+
+    }      
   }
 
 </style>

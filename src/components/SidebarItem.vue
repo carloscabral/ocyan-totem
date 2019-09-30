@@ -3,7 +3,7 @@
     <div class="row align-items-center">
         <div class="col-2">
         <div class="sidebar-item__image">
-            <img :src="require(`../assets/images/${icon}`)" alt="">
+            <img :src="require(`../assets/images/${icon}`)" :alt="icon">
         </div>
         </div>
         <div class="col-10">
@@ -29,13 +29,15 @@ export default {
 
 <style scoped lang="scss">
 
+@import "@/assets/scss/_variables.scss";
+
 .sidebar-item {
   
   margin-bottom: 1px;
   padding: 1.5rem;
   z-index: 9999;
   position: relative;
-  background-color: #567386;
+  background-color: $sidebar-color;
   transition: all .2s ease;
 
   &::before {
@@ -56,12 +58,6 @@ export default {
   &__image {
     width: 2.5rem;
     height: 2.5rem;
-    border-radius: 50%;
-    background-color: #fff;
-
-    img {
-      padding: .5rem;
-    }
   }
 
   &__title {

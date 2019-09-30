@@ -11,8 +11,4 @@ export default {}
 
 @import "../src/assets/scss/main.scss";
 
-body {
-    overflow: hidden;
-}
-
 </style>

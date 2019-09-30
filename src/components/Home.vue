@@ -1,8 +1,9 @@
 <template>
-  <div>
+  <main>
+    <div class="bg-image"></div>
     <div class="sidebar short">
       <div class="sidebar__button">
-        <img class="sidebar__icon" src="../assets/images/indicator-left.svg" alt="">
+        <img class="sidebar__icon" src="../assets/images/indicator-left.svg">
       </div>
       <div class="sidebar__body">
         <div class="div" v-for="(item, index) in items" :key="index">
@@ -11,7 +12,7 @@
       </div>
     </div>
     <router-view></router-view>
-  </div>
+  </main>
 </template>
 
 <script>
@@ -38,6 +39,17 @@ export default {
 
 <style scoped lang="scss">
 
+@import "@/assets/scss/_variables.scss";
+
+main {
+    background-image: url("../assets/images/graphism.svg");
+    background-color: transparent;
+    background-position-y: -14rem;
+    background-position-x: 47rem;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
 .sidebar {
 
   transition: all .2s ease;
@@ -49,7 +61,7 @@ export default {
     height: 3rem;
     top: 0;
     right: 24.5rem;
-    background-color: #567386;
+    background-color: $sidebar-color;
     z-index: 999;
 
     &:hover {
@@ -69,9 +81,10 @@ export default {
     display: fixed;
     right: 0;
     top: 0;
-    background-color: #3F5B70;
+    background-color: $primary-color;
     box-shadow: -20px 0 20px 0 rgba(34, 46, 56, 0.18);
-    overflow: scroll;
+    overflow-y: scroll;
+    overflow-x: hidden;
   }
 }
 
