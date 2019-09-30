@@ -93,7 +93,7 @@ export default {
         width: 333px;
         height: 333px;
         border-radius: 50%;
-        background-size: cover;
+        object-fit: cover;
     }
 
     &__image span {
