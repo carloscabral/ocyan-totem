@@ -1,17 +1,17 @@
 <template>
   <main>
-    <div class="bg-image"></div>
-    <div class="sidebar short">
+    <router-view></router-view>
+    <div class="sidebar">
       <div class="sidebar__button">
         <img class="sidebar__icon" src="../assets/images/indicator-left.svg">
       </div>
       <div class="sidebar__body">
         <div class="div" v-for="(item, index) in items" :key="index">
           <SidebarItem :icon="item.icon" :title="item.title" :text="item.text" />
-        </div>     
+        </div>
+        <div class="sidebar__footer"><p>Copyright © 2019 - Ocyan</p></div>     
       </div>
     </div>
-    <router-view></router-view>
   </main>
 </template>
 
@@ -42,17 +42,15 @@ export default {
 @import "@/assets/scss/_variables.scss";
 
 main {
-    background-image: url("../assets/images/graphism.svg");
-    background-color: transparent;
-    background-position-y: -14rem;
-    background-position-x: 47rem;
-    background-repeat: no-repeat;
-    background-size: contain;
+  background-image: url("../assets/images/graphism.svg");
+  background-repeat: no-repeat;
+  background-position-x: 45rem;
+  background-position-y: -14.25rem; 
 }
 
 .sidebar {
 
-  transition: all .2s ease;
+  transition: all .2s ease;;
 
   &__button {
     display: flex;
@@ -77,14 +75,32 @@ main {
   &__body {
     position: absolute;
     width: 24.5rem;
-    height: 100%;
+    height: 140vh;
     display: fixed;
     right: 0;
     top: 0;
     background-color: $primary-color;
     box-shadow: -20px 0 20px 0 rgba(34, 46, 56, 0.18);
-    overflow-y: scroll;
-    overflow-x: hidden;
+    //overflow-y: scroll;
+  }
+
+  &__footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 3.5rem;
+    background-color: $primary-color;
+    box-shadow: 0 -20px 20px 0 rgba(0, 0, 0, 0.08);
+    width: 100%;
+
+    p {
+      margin-top: .75rem;
+      text-align: center;
+      font-size: .875rem;
+      line-height: 1.5;
+      color: #fff;
+      font-weight: bold;
+    }
   }
 }
 

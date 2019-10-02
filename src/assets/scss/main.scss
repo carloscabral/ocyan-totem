@@ -5,4 +5,9 @@ body {
     font-size: $base-font-size;
     color: $text-color;
     overflow-x: hidden;
+    position: relative;
+}
+
+.container-fluid {
+    padding-bottom: 0 !important;
 }

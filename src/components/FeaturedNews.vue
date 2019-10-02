@@ -70,6 +70,7 @@ export default {
         color: $primary-color;
         max-width: 25rem;
         margin: 0;
+        user-select: none;
     }
 
     &__more {
@@ -94,6 +95,7 @@ export default {
         height: 333px;
         border-radius: 50%;
         object-fit: cover;
+        user-select: none;
     }
 
     &__image span {
@@ -159,6 +161,7 @@ export default {
             border-radius: inherit;
             background-color: $blue-color;
             position: relative;
+            transition: background-color .2s ease;
             
             &:hover {
                 background-color: darken($blue-color, 10%);

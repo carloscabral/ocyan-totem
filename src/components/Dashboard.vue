@@ -5,7 +5,7 @@
       <div class="col-5">
         <form class="search-wrapper">
           <img class="search-wrapper__icon" src="../assets/images/ic-search.svg" alt="Ícone de lupa">
-          <input class="search-wrapper__input" type="text" placeholder="Palavra chave. Ex.: Plataforma">
+          <input class="search-wrapper__input" type="text" placeholder="Buscar palavra chave. Ex.: Plataforma">
           <button class="search-wrapper__button" type="submit">Buscar</button>
         </form>        
       </div>
@@ -31,29 +31,32 @@
     <div class="row">
       <div class="col-md-5 offset-md-1">
           <FeaturedNews class="featured-section"
-            :category="featuredItems[this.featuredId].category"
-            :title="featuredItems[this.featuredId].title"
-            :imageURL="featuredItems[this.featuredId].imageURL"
-            :link-text="featuredItems[this.featuredId].linkText"
-            :linkURL="featuredItems[this.featuredId].linkURL"
-            :is-video="featuredItems[this.featuredId].isVideo" />           
+            :category="featuredItems[this.activeFeaturedId].category"
+            :title="featuredItems[this.activeFeaturedId].title"
+            :imageURL="featuredItems[this.activeFeaturedId].imageURL"
+            :link-text="featuredItems[this.activeFeaturedId].linkText"
+            :linkURL="featuredItems[this.activeFeaturedId].linkURL"
+            :is-video="featuredItems[this.activeFeaturedId].isVideo" />           
       </div>
     </div>
     <div class="row">
-      <div class="col">Central de Notícias</div>
+      <div class="col">
+        <Carousel />
+      </div>
     </div>
-    <span class="featured-section__btn-prev" @click="goPrev"></span>
-    <span class="featured-section__btn-next" @click="goNext"></span> 
+    <span v-show="activeFeaturedId >= 1" class="featured-section__btn-prev" @click="goPrev"></span>
+    <span v-show="activeFeaturedId < featuredItems.length -1" class="featured-section__btn-next" @click="goNext"></span> 
   </div>
 </template>
 
 <script>
 import FeaturedNews from "./FeaturedNews";
+import Carousel from "./Carousel";
 
 export default {
   name: "Dashboard",
   data: () => ({
-    featuredId: 0,
+    activeFeaturedId: 0,
     featuredItems: [
         { 
             id: 0,
@@ -95,14 +98,14 @@ export default {
   }),
   methods: {
     goPrev() {
-        (this.featuredId <= 0) ? this.featuredId = 0 : this.featuredId --
+        (this.activeFeaturedId <= 0) ? this.activeFeaturedId = 0 : this.activeFeaturedId --
     },
     goNext() {
-        (this.featuredId >= this.featuredItems.length - 1) ? this.featuredId = this.featuredItems.length -1 : this.featuredId ++
+        (this.activeFeaturedId >= this.featuredItems.length - 1) ? this.activeFeaturedId = this.featuredItems.length -1 : this.activeFeaturedId ++
     }
   },    
   components: {
-    FeaturedNews
+    FeaturedNews, Carousel
   }   
 };
 </script>
@@ -115,7 +118,7 @@ export default {
     position: relative;
     border-radius: 8px;
     border-style: none;
-    width: 100%;
+    width: 95%;
     height: 3.75rem;
     background-color: rgba(187, 188, 188, 0.2);
     overflow: hidden; 
@@ -217,7 +220,7 @@ export default {
       
     &__btn-prev {
         position: absolute;
-        top: 45%;
+        top: 30%;
         left: 5rem;
         width: 3.5rem;
         height: 3.5rem;
