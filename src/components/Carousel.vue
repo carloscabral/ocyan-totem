@@ -103,7 +103,7 @@ export default {
 
     &__cards {
         width: 73vw;
-        overflow: scroll;
+        overflow-x: scroll;
         //background-color: red;
         margin: 0 -3rem;
         padding: 0 2rem 1.5rem;
