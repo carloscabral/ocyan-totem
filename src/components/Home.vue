@@ -1,7 +1,7 @@
 <template>
   <main>
     <router-view></router-view>
-    <Sidebar @clicked="doSomething" :isSidebarOpen="sidebarShrinked" />
+    <Sidebar @clicked="changeSidebarState" :isSidebarOpen="sidebarShrinked" />
   </main>
 </template>
 
@@ -14,7 +14,7 @@ export default {
     sidebarShrinked: false
   }),
   methods: {
-    doSomething() {
+    changeSidebarState() {
       this.sidebarShrinked = !this.sidebarShrinked
     }
   },  

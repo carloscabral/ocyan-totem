@@ -6,21 +6,15 @@
         <div class="sidebar__body">
             <div v-for="(item, index) in items" :key="index">
                 <a class="sidebar-item" :href="item.link" target="_blank">
-                    <div class="row align-items-center">
+                    <div class="row align-items-start">
                         <div class="col-2">
                             <div class="sidebar-item__image">
                                 <img :src="require(`../assets/images/${item.icon}`)" :alt="item.icon">
                             </div>
                         </div>
-                        <div :class="{ invisible: isSidebarOpen }" class="col-10">
-                            <div class="sidebar-item__title">
-                                <h4>{{ item.title }}</h4>
-                            </div>
-                        </div>
-                        <div :class="{ invisible: isSidebarOpen }" class="col">
-                            <div class="sidebar-item__text">
-                                <p>{{ item.text }}</p>
-                            </div>
+                        <div class="col-10" :class="{ invisible: isSidebarOpen }">
+                            <h4 class="sidebar-item__title">{{ item.title }}</h4>
+                            <p class="sidebar-item__text">{{ item.text }}</p>
                         </div>
                     </div>    
                 </a>                
@@ -86,8 +80,12 @@ export default {
 };
 </script>
 
-<style scoped lang="scss" scoped>
+<style scoped lang="scss">
 @import "@/assets/scss/_variables.scss";
+
+a {
+  text-decoration: none;
+}
 
 .sidebar {
 
@@ -126,10 +124,6 @@ export default {
     }
   }
 
-  &__body {
-
-  }
-
   &__footer {
     position: absolute;
     bottom: 0;
@@ -148,10 +142,6 @@ export default {
       font-weight: bold;
     }
   }
-}
-
-a {
-  text-decoration: none;
 }
 
 .sidebar-item {
@@ -182,7 +172,7 @@ a {
     height: 2.5rem;
   }
 
-  &__title > * {
+  &__title {
     font-size: 1rem;
     line-height: 1.5rem;
     color: #fff;
@@ -190,12 +180,11 @@ a {
     
   }
 
-  &__text > * {
+  &__text {
     font-size: 0.875rem;
     line-height: 1.5rem;
     color: #d2e7f3;
     font-weight: 200;
-    padding-left: 3.9rem;
     margin-bottom: 0;
     display: block;
     text-decoration: none;
@@ -209,7 +198,7 @@ a {
 
 .no-shrinked {
     width: 24.5rem;
-    height: 140vh;
+    height: 150vh;
 }
 
 .invisible {
