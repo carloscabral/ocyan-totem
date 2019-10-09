@@ -1,13 +1,54 @@
 @import "vendors/bootstrap";
 @import "variables.scss";
 
+@font-face {
+    font-family: SonnyGothicRegular;
+    src: url('assets/fonts/SonnyGothicRegular.otf');
+}
+
+@font-face {
+    font-family: SonnyGothicBlack;
+    src: url('assets/fonts/SonnyGothicBlack.otf');
+}
+
+@font-face {
+    font-family: SonnyGothicBook;
+    src: url('assets/fonts/W Foundry - Sonny Gothic Book.otf');
+}
+
+@font-face {
+    font-family: SonnyGothicBold;
+    src: url('assets/fonts/W Foundry - Sonny Gothic Bold.otf');
+}
+
+@font-face {
+    font-family: SonnyGothicExtraBold;
+    src: url('assets/fonts/W Foundry - Sonny Gothic Extra Bold.otf');
+}
+
+
+* {
+    font-family: SonnyGothicRegular, sans-serif;
+}
+
 body {
     font-size: $base-font-size;
     color: $text-color;
     overflow-x: hidden;
     position: relative;
+    -webkit-font-smoothing: antialiased;
 }
 
 .container-fluid {
     padding-bottom: 0 !important;
+}
+
+a {
+    text-decoration: none;
+    color: $blue-color;
+    transition: all .2s ease;
+
+    &:hover {
+        color: darken($blue-color, 10%);
+    }
 }

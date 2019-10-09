@@ -24,7 +24,7 @@
 export default {
   name: "FeaturedNews",
   props: { 
-      category:  { type: String, required: true },
+      category: { type: String, required: true },
       title: { type: String, required: true },
       imageURL: { type: String, required: true },
       linkText: { type: String, required: true },
@@ -48,7 +48,7 @@ export default {
         text-transform: uppercase;
         font-size: .75rem;
         letter-spacing: 1px;
-        font-weight: bold;
+        font-family: SonnyGothicExtraBold;
         padding-left: 2rem;
         position: relative;
         line-height: 1.5;
@@ -65,12 +65,13 @@ export default {
     }
 
     &__title {
-        font-size: 2.25rem;
+        font-size: 2rem;
         line-height: 1.3;
         color: $primary-color;
         max-width: 25rem;
         margin: 0;
         user-select: none;
+        font-family: SonnyGothicBold;
     }
 
     &__more {
@@ -84,6 +85,7 @@ export default {
         font-size: 1.5rem;
         color: $secondary-color;
         line-height: 1.5;
+        font-family: SonnyGothicBold;
     }
 
     &__image img {
@@ -96,6 +98,7 @@ export default {
         border-radius: 50%;
         object-fit: cover;
         user-select: none;
+        z-index: -999;
     }
 
     &__image span {

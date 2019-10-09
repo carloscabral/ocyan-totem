@@ -1,7 +1,7 @@
 <template>
   <main>
     <router-view></router-view>
-    <Sidebar @clicked="changeSidebarState" :isSidebarOpen="sidebarShrinked" />
+    <Sidebar @clicked="changeSidebarState" :isSidebarOpen="sidebarShrinked" :isButtonHidden="hideButton" />
   </main>
 </template>
 
@@ -11,11 +11,24 @@ import Sidebar from "./Sidebar";
 export default {
   name: "Home",
   data: () => ({
-    sidebarShrinked: false
+    sidebarShrinked: true,
+    hideButton: false
   }),
+  mounted () {
+    if (this.$route.name === "dashboard") { 
+      this.sidebarShrinked = false
+      this.hideButton = true
+    }
+  },
   methods: {
     changeSidebarState() {
-      this.sidebarShrinked = !this.sidebarShrinked
+      if (this.$route.name === "dashboard") { 
+        this.sidebarShrinked = false
+        this.hideButton = true
+      } else {
+        this.sidebarShrinked = !this.sidebarShrinked
+        this.hideButton = false
+      }
     }
   },  
   components: {

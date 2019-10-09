@@ -1,6 +1,6 @@
 <template>
     <div class="sidebar" :class="{ 'no-shrinked': !isSidebarOpen, 'shrinked': isSidebarOpen }">
-        <div class="sidebar__button" @click="$emit('clicked')">
+        <div v-show="!isButtonHidden" class="sidebar__button" @click="$emit('clicked')">
             <img class="sidebar__icon" :class="{ 'icon-flip': isSidebarOpen }" src="../assets/images/indicator-left.svg">
         </div>
         <div class="sidebar__body">
@@ -29,7 +29,8 @@
 export default {
   name: "Sidebar",
   props: {
-      isSidebarOpen: { type: Boolean, required: true }
+      isSidebarOpen: { type: Boolean, required: true },
+      isButtonHidden: { type: Boolean, required: true }
   },
   data: () => ({
     items: [
@@ -177,6 +178,7 @@ a {
     line-height: 1.5rem;
     color: #fff;
     text-decoration: none;
+    font-family: SonnyGothicBold;
     
   }
 
@@ -188,6 +190,7 @@ a {
     margin-bottom: 0;
     display: block;
     text-decoration: none;
+    font-family: SonnyGothicBook;
   }
 }
 
