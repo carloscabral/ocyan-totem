@@ -80,7 +80,7 @@ export default {
 
 .carousel {
     position: relative;
-    margin-top: 4rem;
+    margin-top: 8rem;
 
     &__title {
         color: $text-color;

@@ -1,5 +1,5 @@
 <template>
-    <div class="sidebar" :class="{ 'no-shrinked': !isSidebarOpen, 'shrinked': isSidebarOpen }">
+      <div class="sidebar" :class="{ 'no-shrinked': !isSidebarOpen, 'shrinked': isSidebarOpen }">
         <div v-show="!isButtonHidden" class="sidebar__button" @click="$emit('clicked')">
             <img class="sidebar__icon" :class="{ 'icon-flip': isSidebarOpen }" src="../assets/images/indicator-left.svg">
         </div>
@@ -19,7 +19,7 @@
                     </div>    
                 </a>                
             </div>
-            <div class="sidebar__footer"><p>Copyright © 2019 - Ocyan</p></div>     
+            <div class="sidebar__footer" :class="{ invisible: isSidebarOpen }"><p>Copyright © 2019 - Ocyan</p></div>     
         </div>
     </div>
 </template>
@@ -94,9 +94,11 @@ a {
 
   position: absolute;
   width: 24.5rem;
+  min-height: 960px;
   display: fixed;
   right: 0;
   top: 0;
+  bottom: 0;
   background-color: $primary-color;
   box-shadow: -20px 0 20px 0 rgba(34, 46, 56, 0.18);
 
@@ -196,12 +198,12 @@ a {
 
 .shrinked {
     width: 5.5rem;
-    height: auto;
+    //height: 130vh;
 }
 
 .no-shrinked {
     width: 24.5rem;
-    height: 150vh;
+    //height: 146.3vh;
 }
 
 .invisible {

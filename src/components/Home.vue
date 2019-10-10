@@ -9,12 +9,19 @@
 import Sidebar from "./Sidebar";
 
 export default {
+
   name: "Home",
   data: () => ({
     sidebarShrinked: true,
     hideButton: false
   }),
+  beforeRouteEnter(to, from, next) {
+    next(vm => {
+      vm.changeSidebarState
+    });
+  },
   mounted () {
+    console.log("entrou na rota")
     if (this.$route.name === "dashboard") { 
       this.sidebarShrinked = false
       this.hideButton = true
@@ -22,6 +29,7 @@ export default {
   },
   methods: {
     changeSidebarState() {
+
       if (this.$route.name === "dashboard") { 
         this.sidebarShrinked = false
         this.hideButton = true

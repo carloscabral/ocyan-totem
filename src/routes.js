@@ -3,6 +3,7 @@ import Dashboard from './components/Dashboard.vue'
 import News from './components/News.vue'
 import Politics from './components/Politics.vue'
 import NewsDetail from './components/NewsDetail.vue'
+import VueRouter from '../node_modules/vue-router';
 
 
 export const routes = [
@@ -11,5 +12,6 @@ export const routes = [
         { path: '/noticias', component: News, name: 'news' },
         { path: '/politicas', component: Politics, name: 'politics' },
         { path: '/noticias/:id', component: NewsDetail, name: 'newsDetail' },
+        { path: '*', redirect: '/'}
     ]}
 ]
