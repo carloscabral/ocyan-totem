@@ -2,9 +2,9 @@
   <div class="container-fluid px-5 py-4">
     <div class="main-container">
       <div class="row">
-        <div class="logo col-1 mt-4"><img src="../assets/images/logo.svg" alt="Ocyan Logo"></div>
-        <div class="col-12 offset-1 mt-4 mb-5 news__container">
-            <div class="row align-items-start">
+        <router-link to="/" tag="div" class="logo"><img src="../assets/images/logo.svg" alt="Ocyan Logo"></router-link>
+        <div class="col-12 offset-1 mb-5">
+            <div class="row align-items-start news__container">
                 <a class="back-link" href="#" @click="goBack">Voltar</a>
                 <h4 v-if="pageTitle" class="title">{{ pageTitle }}</h4>
             </div>
@@ -31,6 +31,20 @@ export default {
 
 <style scoped lang="scss">
 @import "@/assets/scss/_variables.scss";
+
+.logo {
+  position: fixed;
+  top: 3rem;
+  left: 3rem;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.news__container {
+  margin-top: 6rem;
+}
 
 .back-link {
   color: $blue-color;

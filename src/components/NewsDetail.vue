@@ -1,7 +1,8 @@
 <template>
     <InnerPageLayout pageTitle="">
         <div class="row">
-          <div class="col-6 mt-4">
+          <div class="col-8 mt-4">
+
             <h1 class="news-detail__title">Ocyan completa quatro anos de uso de MPD e reforça pioneirismo na perfuração de poços</h1>
             <span class="news-detail__date">11 de Junho de 2019</span>
             <img class="news-detail__image" src="https://www.opetroleo.com.br/wp-content/uploads/2017/05/plataforma-petroleo-cima.jpg" alt="Imagem do post" >
@@ -23,7 +24,12 @@ Dentre os 20 poços perfurados no Brasil com o emprego da tecnologia pela Ocyan,
 
           </div>
 
-          <div class="col-3 offset-1">
+          <!-- <div class="pie">
+            <div class="pie-content"><span class="timer">{{ myTimer }}</span></div>
+          </div> -->
+
+
+          <!-- <div class="col-3 offset-1">
             <aside class="news-sidebar">
 
               <div class="pie">
@@ -39,8 +45,9 @@ Dentre os 20 poços perfurados no Brasil com o emprego da tecnologia pela Ocyan,
               </div>
 
             </aside>
-          </div>
-        </div>       
+          </div> -->
+
+      </div>       
     </InnerPageLayout>
 </template>
 
@@ -55,7 +62,7 @@ export default {
     InnerPageLayout, StarRating
   },
   data: () => ({
-    myTimer: "1:00",
+    myTimer: "3:00",
     rating: 0,
     evaluation: "",
     isMessageVisible: false,
@@ -99,7 +106,7 @@ export default {
 
         if (minutes == 0 && seconds == 0) { 
           clearInterval(interval);
-          this.$router.replace({ name: 'dashboard'});
+          this.$router.push({ name: 'dashboard'});
         }
 
     }, 1000);     
@@ -154,7 +161,7 @@ export default {
 
           if (minutes == 0 && seconds == 0) { 
             clearInterval(interval);
-            this.$router.replace({ path: 'dashboard'});
+            this.$router.push({ name: 'dashboard'});
           }
       }, 1000);
     }
@@ -298,7 +305,7 @@ export default {
 
 // Pie Counter
 
-$time: 60; //seconds
+$time: 180; //seconds
 $bg-color: #fff;
 $accent-color: #e5e5e5;
 $accent-color-dark: #c1d300;
@@ -309,12 +316,12 @@ $accent-color-dark: #c1d300;
 }
 
 .pie {
-  position: absolute;
+  position: fixed;
   display: block;
-  top: -9rem;
+  top: 3rem;
   left: 0;
-	width: 100px;
-	height: 100px;
+	width: 75px;
+	height: 75px;
 	border-radius: 50%;
 	background: $accent-color;
 	background-image: linear-gradient(to right, transparent 50%, $accent-color-dark 0);
@@ -367,8 +374,8 @@ $accent-color-dark: #c1d300;
 .timer {
   position: absolute;
   top: 37%;
-  left: 20%;
-  font-size: 1.5rem;
+  left: 15%;
+  font-size: 1.3rem;
   line-height: 1;
   color: $primary-color;
   font-family: SonnyGothicBold;

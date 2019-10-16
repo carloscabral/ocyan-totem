@@ -1,8 +1,8 @@
 <template>
   <div class="container-fluid px-5 py-4">
     <div class="row">
-      <div class="col-1 mt-3"><img src="../assets/images/logo.svg" alt="Ocyan Logo"></div>
-      <div class="col-5">
+      <div class="col-1 mt-3 logo"><img src="../assets/images/logo.svg" alt="Ocyan Logo"></div>
+      <div class="col-5 offset-1">
         <form class="search-wrapper">
           <img class="search-wrapper__icon" src="../assets/images/ic-search.svg" alt="Ícone de lupa">
           <input class="search-wrapper__input" type="text" placeholder="Buscar palavra chave. Ex.: Plataforma">
@@ -113,6 +113,14 @@ export default {
 <style scoped lang="scss">
 
 @import "@/assets/scss/_variables.scss";
+
+  .logo {
+    position: fixed; 
+
+    &:hover {
+      cursor: pointer;
+    }    
+  }
 
   .search-wrapper {
     position: relative;
